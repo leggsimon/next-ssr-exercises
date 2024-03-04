@@ -3,12 +3,10 @@ import React from 'react';
 
 import Spinner from '../../../components/Spinner';
 import CartTable from './CartTable';
+import { CartContext } from './CartProvider';
 
-function CheckoutFlow({
-  items,
-  taxRate,
-  handleDeleteItem,
-}) {
+function CheckoutFlow({ taxRate }) {
+  const { items } = React.useContext(CartContext);
   if (!items) {
     return (
       <div className='checkout-flow empty'>
@@ -35,10 +33,7 @@ function CheckoutFlow({
 
   return (
     <div className="checkout-flow">
-      <CartTable
-        items={items}
-        handleDeleteItem={handleDeleteItem}
-      />
+      <CartTable />
 
       <table className="checkout-totals">
         <tbody>
