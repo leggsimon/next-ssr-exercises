@@ -1,7 +1,10 @@
 'use client';
 import React from 'react';
+import { CartContext } from './CartProvider';
 
-function CartTable({ items, handleDeleteItem }) {
+function CartTable() {
+  const { items, deleteItem } =
+    React.useContext(CartContext);
   return (
     <table className="shopping-cart">
       <thead>
@@ -20,7 +23,7 @@ function CartTable({ items, handleDeleteItem }) {
             <td>{item.quantity}</td>
             <td>
               <button
-                onClick={() => handleDeleteItem(item)}
+                onClick={() => deleteItem(item)}
               >
                 Remove
               </button>
