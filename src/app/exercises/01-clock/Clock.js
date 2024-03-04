@@ -2,8 +2,10 @@
 import React from 'react';
 import format from 'date-fns/format';
 
+import Spinner from '../../../components/Spinner';
+
 function Clock() {
-  const [time, setTime] = React.useState(new Date());
+  const [time, setTime] = React.useState(null);
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -15,9 +17,7 @@ function Clock() {
     };
   }, []);
 
-  return (
-    <p className="clock">{format(time, 'hh:mm:ss.S a')}</p>
-  );
+  return <p className='clock'>{time ? format(time, 'hh:mm:ss.S a') : <Spinner />}</p>;
 }
 
 export default Clock;
